@@ -50,8 +50,8 @@
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "example": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+            },DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263
+            "example": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263"
           },
           {
             "name": "limit",
