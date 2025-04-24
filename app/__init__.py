@@ -1,4 +1,4 @@
-from flask import Flask, redirect, send_from_directory
+from flask import Flask, jsonify, redirect, send_from_directory
 from flask_cors import CORS
 
 def create_app(config_object="app.config.Config"):
@@ -20,7 +20,7 @@ def create_app(config_object="app.config.Config"):
     
     @app.route('/health')
     def health():
-        return 'PerceptChain Backend is running!'
+        return jsonify({"message": {"status": "healthy", "description": "PerceptChain Backend is running!"}}), 200
     
     @app.route('/docs')
     def docs():

@@ -1,20 +1,42 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "PerceptChain Backend API",
+    "title": "PerceptChain Bridge API",
     "description": "API for fetching and visualizing Solana blockchain data using Helius RPC",
     "version": "1.0.0",
     "contact": {
-      "name": "API Support"
+      "name": "Hogwarts & Skipp"
     }
   },
   "servers": [
     {
       "url": "https://perceptchain-backend-web.vercel.app/api",
-      "description": "Development server"
+      "description": "Production Server"
     }
   ],
   "paths": {
+    "/health": {
+      "get": {
+        "summary": "Health check",
+        "description": "Performs a status check of PerceptChain Bridge",
+        "responses": {
+          "200": {
+            "description": "PerceptChain Bridge is up and running"
+          }
+        }
+      }
+    },
+    "/docs": {
+      "get": {
+        "summary": "Documentation",
+        "description": "PerceptChain Bridge Documentation",
+        "responses": {
+          "200": {
+            "description": "Documentation Page"
+          }
+        }
+      }
+    },
     "/token-holders/{token_address}/{limit}": {
       "get": {
         "summary": "Get top token holders",
