@@ -1,0 +1,127 @@
+{
+    "openapi": "3.0.2",                     
+    "info": {
+      "title": "PerceptChain API",
+      "version": "1.0.0"
+    },
+    "servers": [
+      { "url": "http://localhost:5000" }
+    ],
+    "paths": {
+      "/health": {
+        "get": {
+          "summary": "Health check",
+          "responses": {
+            "200": { "description": "OK" }
+          }
+        }
+      },
+      "/balances/{wallet_address}": {
+        "get": {
+          "summary": "Get balances",
+          "parameters": [
+            {
+              "in": "path",                
+              "name": "wallet_address",
+              "schema": { "type": "string" },
+              "required": true,
+              "description": "SVM wallet address"
+            },
+            {
+              "in": "query",               
+              "name": "chains",
+              "schema": { "type": "string", "default": "solana" },
+              "required": false,
+              "description": "Comma-separated chains"
+            }
+          ],
+          "responses": {
+            "200": { "description": "Balances JSON" },
+            "500": { "description": "Error response" }
+          }
+        }
+      },
+      "/top-holders/{token_symbol}": {
+        "get": {
+          "summary": "Get top token holders",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "token_symbol",
+              "schema": { "type": "string" },
+              "required": true,
+              "description": "Token symbol"
+            },
+            {
+              "in": "query",
+              "name": "limit",
+              "schema": { "type": "integer", "default": 10 },
+              "required": false,
+              "description": "Number of top holders to return"
+            }
+          ],
+          "responses": {
+            "200": { "description": "Top holders data" },
+            "500": { "description": "Error response" }
+          }
+        }
+      },
+      "/token-transfers/{token_symbol}": {
+        "get": {
+          "summary": "Get token transfers",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "token_symbol",
+              "schema": { "type": "string" },
+              "required": true,
+              "description": "Token symbol"
+            },
+            {
+              "in": "query",
+              "name": "days",
+              "schema": { "type": "integer", "default": 7 },
+              "required": false,
+              "description": "Number of days of history"
+            },
+            {
+              "in": "query",
+              "name": "limit",
+              "schema": { "type": "integer", "default": 100 },
+              "required": false,
+              "description": "Number of transfers to return"
+            }
+          ],
+          "responses": {
+            "200": { "description": "Token transfers data" },
+            "500": { "description": "Error response" }
+          }
+        }
+      },
+      "/protocol-activity/{protocol_name}": {
+        "get": {
+          "summary": "Get protocol activity",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "protocol_name",
+              "schema": { "type": "string" },
+              "required": true,
+              "description": "Protocol name"
+            },
+            {
+              "in": "query",
+              "name": "days",
+              "schema": { "type": "integer", "default": 30 },
+              "required": false,
+              "description": "Number of days of history"
+            }
+          ],
+          "responses": {
+            "200": { "description": "Protocol activity data" },
+            "500": { "description": "Error response" }
+          }
+        }
+      }
+    }
+  }
