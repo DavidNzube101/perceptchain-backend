@@ -22,5 +22,9 @@ def create_app(config_class=Config):
     @app.route('/')
     def default():
         return redirect('/docs', code=302)
+    
+    @app.route("/get-docs-json")
+    def get_docs_json():
+        return send_from_directory(app.static_folder, 'swagger.json')
 
     return app
