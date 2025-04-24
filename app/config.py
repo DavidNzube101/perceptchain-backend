@@ -1,14 +1,25 @@
 import os
 from dotenv import load_dotenv
 
+# Load environment variables from .env file
 load_dotenv()
 
 class Config:
-    DEBUG = os.getenv("FLASK_DEBUG", "false").lower() == "true"
-    DUNE_API_KEY = os.getenv("DUNE_API_KEY", "")
-    DUNE_API_BASE = "https://api.dune.com/api"
-    ECHO_API_BASE = f"{DUNE_API_BASE}/echo/beta"
-    V1_API_BASE = f"{DUNE_API_BASE}/v1"
+    """Base configuration class."""
+    # API key validation
+    HELIUS_API_KEY = os.environ.get('HELIUS_API_KEY')
+    if not HELIUS_API_KEY:
+        raise ValueError("HELIUS_API_KEY not found in environment variables")
     
-class DevelopmentConfig(Config):
-    DEBUG = True
+    # Helius RPC URL
+    try:
+        HELIUS_RPC_URL = f"https://mainnet.helius-rpc.com/?api-key={HELIUS_API_KEY}"
+    except:
+        HELIUS_API_URL = os.environ.get('HELIUS_API_URL')
+    
+    # Flask configuration
+    DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
+    PORT = int(os.environ.get('PORT', 5000))
+    
+    # Request timeout settings
+    DEFAULT_TIMEOUT = 20000
