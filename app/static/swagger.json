@@ -43,6 +43,7 @@
         "description": "Retrieves the top holders of a specific token by amount",
         "operationId": "getTokenHolders",
         "parameters": [
+          
           {
             "name": "token_address",
             "in": "path",
@@ -50,7 +51,7 @@
             "required": true,
             "schema": {
               "type": "string"
-            },DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263
+            },
             "example": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263"
           },
           {
